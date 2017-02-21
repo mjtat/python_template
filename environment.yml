@@ -1,0 +1,31 @@
+name: boston_analytics
+channels: !!python/tuple
+- !!python/unicode
+  'defaults'
+dependencies:
+- openssl=1.0.2j=0
+- pip=9.0.1=py36_1
+- python=3.6.0=0
+- readline=6.2=2
+- setuptools=27.2.0=py36_0
+- sqlite=3.13.0=0
+- tk=8.5.18=0
+- unixodbc=2.3.4=0
+- wheel=0.29.0=py36_0
+- xz=5.2.2=1
+- zlib=1.2.8=3
+- pip:
+  - arrow==0.10.0
+  - attrs==16.3.0
+  - cerberus==1.0.1
+  - hypothesis==3.6.1
+  - jsonpickle==0.9.4
+  - kombu==4.0.2
+  - numpy==1.12.0
+  - pandas==0.19.2
+  - pyaml==16.12.2
+  - pyodbc==3.1.1
+  - python-dateutil==2.6.0
+  - pyyaml==3.12
+  - requests==2.12.4
+
