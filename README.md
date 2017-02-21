@@ -1,6 +1,13 @@
-## Sample Python Module Template
+## Python Project Template
 
-In order to accelerate development, encourage collaboration, and increase maintainablity, we would like to standardize how projects are developed on the analytics team. 
+This project structure builds on the Cookiecutter Data Science Project structure. Namely the goals are 
+
+
+
+* Collobrate more easily with others on this analysis 
+* Feel more confident in the conclusions you are able to draw 
+* Ensuring that your analysis is reproducible 
+*   
 
 ### Best Practices 
 
@@ -37,7 +44,7 @@ Once the appropriate tools are installed.
    *  If you are on Windows use the Command Prompt application that is included with the Anaconda Installation. 
 *  Run the following command:
 
-          ` conda create env -f environment.yml`
+           ` conda create env -f environment.yml`
 
 This command will instantiate the conda python enviornment for this module. Creating a  project specific python interpreter and downloading all the listed dependencies.  The standard template enviornment.yml contains the following: 
 
@@ -91,12 +98,12 @@ After installing all necessary dependences you can update the environment.yml fi
 
 
 ### Development Workflow Tips 
-####  Iteratively  Install Python Package
+####  Iteratively Install Python Package
 Generally during development I'll run pip in editable mode with: 
 `pip install -e .`
 after runnning this command pip will continiously monitor the directory for changes in the source code and reinstall your module when necessary. 
 
-#### 
+
 
 
 
