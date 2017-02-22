@@ -1,20 +1,30 @@
 ## Python Project Template
 
-This project structure builds on the Cookiecutter Data Science Project structure. Namely the goals are 
+Generally with data projects the exiciting or memorable outcome is a visualization, analysis, report or prediction. Something that you can tangibly look at and share with your teammates and customers.  A lot of effort is often spent making the end-product look good at the expense of the quality of code that generates the product. While that may serve the purpose for a one time analytic or a hack-a-thon type activity, this lack of focus on quality and mantinably ends up coming back to bite you the next time you come back to the project or if the scope of analysis changes. Making a one-time initial investment on making sure that the code backing your analysis is modular, testable and documented will pay dividends later on. 
 
+This project structure builds upon the Cookiecutter Data Science Project structure. 
 
+[Cookiecutter Data Science Project]: https://drivendata.github.io/cookiecutter-data-science/
+
+tldr the goals of this template are to: 
 
 * Collobrate more easily with others on this analysis 
 * Feel more confident in the conclusions you are able to draw 
 * Ensuring that your analysis is reproducible 
-*   
 
 ### Best Practices 
 
-* Your project must be source controlled
-* Projects are contained within a Python Module 
+* Your project must use git for source control and be hosted on GitHub 
+  * This will help you collobrate with others on the team and provide more visiblity in the analysis process
+  * Even if you are working alone, using git gives you a greater ability for experimentation by allowing you to quickly implement new ideas without worrying about breaking functionality. You will always have the ablity to go back to the last working state 
+  * The git commit log also can be used as a on-going diary of the progress of your project. 
+* Projects are contained within a Python Package
+  * Packaging your source code as a package allows you to more easily make sure that your code is testable and be confident that your results are reproducible.
+  * It will be easier to share the functionality between projects more easily rather than repeatedly creating the same functionality. Don't reinvent the wheel.   
 * All projects will use a conda environment to package project dependencies
+  * Keeping track of your project dependencies will allow you to ensure that your analysis can be reproduced irregardless of the system that it was initially run on. 
 * Python 3.x is encouraged for new projects unless 2.7.x is absolutely neccessary
+  * It's 2017 just use 3.x
 * Your project should be unit-tested
 
 
@@ -44,7 +54,7 @@ Once the appropriate tools are installed.
    *  If you are on Windows use the Command Prompt application that is included with the Anaconda Installation. 
 *  Run the following command:
 
-           ` conda create env -f environment.yml`
+   `conda create env -f environment.yml`
 
 This command will instantiate the conda python enviornment for this module. Creating a  project specific python interpreter and downloading all the listed dependencies.  The standard template enviornment.yml contains the following: 
 
