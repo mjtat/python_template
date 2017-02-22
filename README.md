@@ -54,7 +54,7 @@ Once the appropriate tools are installed.
    *  If you are on Windows use the Command Prompt application that is included with the Anaconda Installation. 
 *  Run the following command:
 
-   `conda create env -f environment.yml`
+   `conda env create -f environment.yml`
 
 This command will instantiate the conda python enviornment for this module. Creating a  project specific python interpreter and downloading all the listed dependencies.  The standard template enviornment.yml contains the following: 
 
