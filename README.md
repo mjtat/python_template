@@ -16,15 +16,27 @@ tldr the goals of this template are to:
 
 * Your project must use git for source control and be hosted on GitHub 
   * This will help you collobrate with others on the team and provide more visiblity in the analysis process
+
   * Even if you are working alone, using git gives you a greater ability for experimentation by allowing you to quickly implement new ideas without worrying about breaking functionality. You will always have the ablity to go back to the last working state 
+
   * The git commit log also can be used as a on-going diary of the progress of your project. 
-* Projects are contained within a Python Package
+
+* Notebooks should mainly be used for exploration and communication of results 
+  * Its okay to start off working mainly in the notebook enviornment, but make sure to refactor the good parts into the package for your project
+
+* Projects should contained within a Python Package
+
   * Packaging your source code as a package allows you to more easily make sure that your code is testable and be confident that your results are reproducible.
   * It will be easier to share the functionality between projects more easily rather than repeatedly creating the same functionality. Don't reinvent the wheel.   
+
 * All projects will use a conda environment to package project dependencies
+
   * Keeping track of your project dependencies will allow you to ensure that your analysis can be reproduced irregardless of the system that it was initially run on. 
+
 * Python 3.x is encouraged for new projects unless 2.7.x is absolutely neccessary
+
   * It's 2017 just use 3.x
+
 * Your project should be unit-tested
 
 
@@ -54,7 +66,7 @@ Once the appropriate tools are installed.
    *  If you are on Windows use the Command Prompt application that is included with the Anaconda Installation. 
 *  Run the following command:
 
-   `conda env create -f environment.yml`
+    `conda env create -f environment.yml`
 
 This command will instantiate the conda python enviornment for this module. Creating a  project specific python interpreter and downloading all the listed dependencies.  The standard template enviornment.yml contains the following: 
 
