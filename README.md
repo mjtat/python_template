@@ -2,8 +2,6 @@
 
 Generally with data projects the exiciting or memorable outcome is a visualization, analysis, report or prediction. Something that you can tangibly look at and share with your teammates and customers.  A lot of effort is often spent making the end-product look good at the expense of the quality of code that generates the product. While that may serve the purpose for a one-time analytic, a lack of focus on quality and maintainablity will make it difficult when revisiting the project or if the scope of analysis changes. Making an initial investment on modular, testable and documented code will pay dividends later on. 
 
-
-
 This project structure builds upon the Cookiecutter Data Science Project structure. 
 
 [Cookiecutter Data Science Project]: https://drivendata.github.io/cookiecutter-data-science/
