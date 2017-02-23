@@ -11,6 +11,14 @@ import jsonpickle
 
 
 def collect_data(data_source):
+    """
+    This function will take a DataSource object check to see if authentication
+    is required to access the resource and then perform the appropriate request
+    to access the data.
+    :param data_source: a DataSource describing the type of resource that will be accessed
+    and if the resource needs authentication for access
+    :return:
+    """
     data_source = DataSource.from_json(data_source)
     if not data_source.authRequired:
         print(f'Requesting data from: {data_source.source}')
@@ -22,8 +30,12 @@ def collect_data(data_source):
 
 
 def store_data(response):
+    """
+    This function will store a Response object in the local filesystem
+    :param response: The content received from collect data
+    :return: Nothing
+    """
     print(f'Received a response from a data sources')
-    response = Response.from_json(response)
     print(f'Preparing to write data from {response.data_source}')
     writer = ResponseWriter()
     writer.save_locally(response)
@@ -31,12 +43,23 @@ def store_data(response):
 
 @attr.s
 class Response(object):
+    """
+    This class is used to store data recieved from the API's that we are querying.
+    Generally we care about where the data came from, when the data was accessed and
+    provide a unique id based on a hash of the contents
+    """
+
     data_source = attr.ib()
     created = attr.ib()
     content = attr.ib()
     id = attr.ib(init=False)
 
     def hash_id(self):
+        """
+        Creates a hash-id based of when the object was created, the
+        source url, and the data source type.
+        :return: a string representing the hash id
+        """
         h = hashlib.sha256()
         h.update(str(self.created.timestamp).encode('utf-8'))
         h.update(self.data_source.source.encode('utf-8'))
@@ -60,8 +83,13 @@ class Response(object):
     def from_json(response):
         return jsonpickle.decode(response)
 
+
 @attr.s
 class ResponseWriter(object):
+    """
+        This class is in charge knowing how to write the response
+        either locally or to s3.
+    """
     bucket = attr.ib(default=None)
     s3conn = attr.ib(default=None)
     local_file_dir = attr.ib(default='/tmp/')
@@ -78,8 +106,6 @@ class ResponseWriter(object):
             f.write(str(response.content))
 
 
-
-
 @attr.s
 class DataCollectionSources(object):
     sources = attr.ib()
@@ -87,6 +113,9 @@ class DataCollectionSources(object):
 
 @attr.s
 class DataSource(object):
+    """
+     This object describes the data that we will be accessing through a rest api.
+    """
     source = attr.ib()
     url = attr.ib()
     responseType = attr.ib()
@@ -105,7 +134,15 @@ class DataSource(object):
     def from_json(data):
         return jsonpickle.decode(data)
 
+
 def load_data_collection(document):
+    """
+    This function will load a yaml data structure and check to make sure
+    that the schema of the loaded data structure matches the requirments listed
+    and then create DataSource objects which will be used to query
+    :param document: parsed yaml document
+    :return: List of DataSources
+    """
     document = yaml.safe_load(document)
     sources = []
     expected_yaml_schema = {
@@ -140,6 +177,13 @@ def load_data_collection(document):
 
 
 def get_public_request(data_source, timeout=30):
+    """
+    This function will attempt to query a rest api for a data source that
+    does not require authentication
+    :param data_source: the DataSource object
+    :param timeout: Number of seconds to wait before timing out on the request
+    :return: a Response
+    """
     try:
         r = requests.get(data_source.url, timeout=timeout)
         return Response(data_source, arrow.utcnow(), r.content)
@@ -147,5 +191,12 @@ def get_public_request(data_source, timeout=30):
         raise RequestFailure(err)
 
 
-def get_auth_request(data_source):
-    return Exception
+def get_auth_request(data_source, timeout=30):
+    """
+        This function will attempt to query a rest api for a data source that
+        requires authentication
+        :param data_source: the DataSource object
+        :param timeout: Number of seconds to wait before timing out on the request
+        :return: a Response
+        """
+    return NotImplementedError
