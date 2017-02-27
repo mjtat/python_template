@@ -16,7 +16,7 @@ dependencies:
 - zlib=1.2.8
 - pip:
   - amqp==2.1.4
-  - appnope==0.1.0
+  - appnope==0.1.0c
   - arrow==0.10.0
   - attrs==16.3.0
   - bleach==1.5.0
