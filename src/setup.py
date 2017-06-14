@@ -1,5 +1,5 @@
 # Always prefer setuptools over distutils
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def readme():
@@ -12,6 +12,6 @@ setup(name='boston_analytics_example',
       url='https://github.com/cityofboston/<boston_analytics_example>',
       author='Your Name',
       author_email='<youremail>@boston.gov',
-      packages=['boston_analytics_example'],
+      packages=find_packages(exclude=('tests','docs')),
       zip_safe=False)
 
